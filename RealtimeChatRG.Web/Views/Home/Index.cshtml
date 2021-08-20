@@ -1,0 +1,50 @@
+﻿@{
+    List<RealtimeChatRG.Core.Entities.Room> rooms = ViewBag.rooms;
+}
+
+<div id="LoginPanel" class="card">
+    <div class="card-header bg-secondary">
+        <b class="text-white">Giriş Paneli</b>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <input id="txtNickname" type="text" name="Nickname" class="form-control" placeholder="Kullanıcı Adı giriniz." />
+            </div>
+            <div class="col-md-4">
+                <button id="btnLogin" class="btn btn-success btn-sm">GİRİŞ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ChatPanel" class="card mt-2" style="display:none;">
+    <div class="card-header bg-primary">
+        <b class="text-white">Chat</b>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8" style="min-height:300px">
+                <textarea id="txtMessages" name="Messages" class="form-control h-75" disabled></textarea>
+
+                <div class="row mt-2">
+                    <div class="col-10">
+                        <input id="txtMessage" type="text" name="Message" class="form-control" placeholder="Mesajınız" disabled />
+                    </div>
+                    <div class="col-2">
+                        <button id="btnSend" class="btn btn-success btn-sm" disabled>GÖNDER</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="list-group" id="lbRooms" role="tablist">
+                    @foreach (var item in rooms)
+                    {
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#@item.Id" role="tab">@item.RoomName</a>
+                    }
+                </div><br />
+                <button id="btnJoin" class="btn btn-primary btn-sm w-100">Katıl</button>
+            </div>
+        </div>
+    </div>
+</div>
